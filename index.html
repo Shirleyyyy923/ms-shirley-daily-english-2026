@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ms Shirley Daily English Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Made for Ms Shirley's Students</p>
+      <h1>Ms Shirley Daily English</h1>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="shuffleBtn" title="随机一句" aria-label="随机一句">↻</button>
+      <button class="primary-btn" id="quizBtn">开始测验</button>
+    </div>
+  </header>
+
+  <main class="app-grid">
+    <aside class="side-panel">
+      <img src="assets/study-scene.svg" alt="Students practising English conversation" class="scene">
+      <div class="meter-block">
+        <div class="meter-copy">
+          <span>今日复习</span>
+          <strong id="progressText">0 / 100</strong>
+        </div>
+        <div class="meter"><span id="progressBar"></span></div>
+      </div>
+      <label class="search-label" for="searchInput">搜索句子</label>
+      <input id="searchInput" type="search" placeholder="canteen, homework, 借..." autocomplete="off">
+      <nav class="category-list" id="categoryList" aria-label="Conversation categories"></nav>
+    </aside>
+
+    <section class="learning-area">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" id="categoryKicker">全部场景</p>
+          <h2 id="sectionTitle">100句日常英文会话</h2>
+        </div>
+        <div class="counter" id="resultCount">100</div>
+      </div>
+
+      <div class="practice-strip">
+        <button class="mode-btn active" data-mode="browse">浏览</button>
+        <button class="mode-btn" data-mode="flash">翻卡</button>
+        <button class="mode-btn" data-mode="favorites">收藏</button>
+        <button class="mode-btn" data-mode="games">小游戏</button>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+      <div class="flash-stage hidden" id="flashStage">
+        <div class="flash-card" id="flashCard" tabindex="0">
+          <p class="tag" id="flashTag">School</p>
+          <h3 id="flashEnglish">Good morning, teacher.</h3>
+          <p id="flashChinese">老师，早上好。</p>
+          <p class="example" id="flashExample">Say it clearly and politely.</p>
+        </div>
+        <div class="flash-controls">
+          <button class="secondary-btn" id="prevFlash">上一句</button>
+          <button class="primary-btn" id="flipFlash">翻译</button>
+          <button class="secondary-btn" id="nextFlash">下一句</button>
+        </div>
+      </div>
+      <div class="games-stage hidden" id="gamesStage">
+        <section class="game-panel">
+          <div class="game-head">
+            <div>
+              <p class="eyebrow">Game 1</p>
+              <h3>情境快选</h3>
+            </div>
+            <span class="score-pill" id="sceneScore">0</span>
+          </div>
+          <p class="game-question" id="scenePrompt">在餐厅点餐时，你会说哪一句？</p>
+          <div class="game-options" id="sceneOptions"></div>
+          <p class="game-feedback" id="sceneFeedback"></p>
+          <button class="secondary-btn" id="nextSceneGame" type="button">下一题</button>
+        </section>
+
+        <section class="game-panel">
+          <div class="game-head">
+            <div>
+              <p class="eyebrow">Game 2</p>
+              <h3>奶茶点单挑战</h3>
+            </div>
+            <span class="score-pill">Build</span>
+          </div>
+          <div class="order-builder">
+            <label>Drink
+              <select id="drinkSelect">
+                <option>milk tea</option>
+                <option>green tea</option>
+                <option>chocolate milk</option>
+              </select>
+            </label>
+            <label>Sugar
+              <select id="sugarSelect">
+                <option>less sugar</option>
+                <option>normal sugar</option>
+                <option>no sugar</option>
+              </select>
+            </label>
+            <label>Ice
+              <select id="iceSelect">
+                <option>less ice</option>
+                <option>normal ice</option>
+                <option>no ice</option>
+              </select>
+            </label>
+          </div>
+          <p class="built-sentence" id="builtSentence"></p>
+          <button class="primary-btn" id="speakOrder" type="button">听点单句</button>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="quiz-dialog" id="quizDialog">
+    <form method="dialog" class="quiz-box">
+      <button class="close-btn" value="cancel" aria-label="关闭">×</button>
+      <p class="eyebrow">Quick Check</p>
+      <h2 id="quizQuestion">这句话英文怎么说？</h2>
+      <div class="quiz-options" id="quizOptions"></div>
+      <p class="quiz-feedback" id="quizFeedback"></p>
+      <button class="primary-btn" id="nextQuiz" type="button">下一题</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
